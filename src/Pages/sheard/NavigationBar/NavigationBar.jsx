@@ -7,7 +7,6 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const NavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useContext(AuthContext);
-  console.log(user);
 
   const handleLogout = () => {
     logout()
@@ -47,8 +46,8 @@ const NavigationBar = () => {
                 <>
                   {user.photoURL ? (
                     <img
-                      src={user?.photoURL}
-                      className="w-14 h-14 rounded"
+                      src={user.photoURL}
+                      className="w-14 h-14 rounded-full"
                       title={user?.displayName}
                     />
                   ) : (

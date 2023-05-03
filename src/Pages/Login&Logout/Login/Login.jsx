@@ -3,9 +3,11 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, loginWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const handleLogin = (e) => {
@@ -22,6 +24,15 @@ const Login = () => {
       });
     form.reset();
   };
+
+  const handleLoginGoogle = () => {
+    loginWithGoogle()
+      .then(() => {})
+      .catch((error) => {
+        setError(error);
+      });
+  };
+  const handleLoginGithub = () => {};
   return (
     <div className="Container">
       <div className="md:w-1/2 mx-auto">
@@ -91,6 +102,22 @@ const Login = () => {
             please register
           </Link>
         </p>
+        <div>
+          <p
+            onClick={handleLoginGoogle}
+            className=" border border-teal-600  py-2 mb-3 text-center text-lg cursor-pointer rounded"
+          >
+            <FcGoogle className="inline-block me-2 text-2xl" /> Login with
+            google
+          </p>
+          <p
+            onClick={handleLoginGithub}
+            className=" border border-teal-600  py-2 mb-3 text-center text-lg cursor-pointer rounded"
+          >
+            <FaGithub className="inline-block me-2 text-2xl" />
+            Login with github
+          </p>
+        </div>
       </div>
     </div>
   );
