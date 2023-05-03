@@ -6,6 +6,7 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [seePassword, setSeePassword] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -22,6 +23,9 @@ const Register = () => {
       });
     form.reset();
   };
+  const handleSeePassword = () => {
+    setSeePassword(!seePassword);
+  };
   return (
     <div className="Container">
       <div className="md:w-1/2 mx-auto">
@@ -36,7 +40,6 @@ const Register = () => {
               name="name"
               id="name"
               placeholder="enter your full name"
-              required
               className="input input-bordered input-info w-full block"
             />
           </div>
@@ -49,7 +52,6 @@ const Register = () => {
               name="photo_URL"
               id="photo_URL"
               placeholder="enter your photo url"
-              required
               className="input input-bordered input-info w-full block"
             />
           </div>
@@ -74,7 +76,7 @@ const Register = () => {
               Your password
             </label>
             <input
-              type="password"
+              type={seePassword ? "text" : "password"}
               name="password"
               id="password"
               placeholder="enter your password"
@@ -82,7 +84,7 @@ const Register = () => {
               className="input input-bordered input-info w-full block"
             />
           </div>
-          <span className="flex items-center mt-3">
+          <span className="flex items-center mt-3" onClick={handleSeePassword}>
             <input type="checkbox" className="checkbox me-3" /> see password
           </span>
           {error ? (
