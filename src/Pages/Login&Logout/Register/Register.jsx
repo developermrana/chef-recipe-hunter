@@ -36,6 +36,7 @@ const Register = () => {
               name="name"
               id="name"
               placeholder="enter your full name"
+              required
               className="input input-bordered input-info w-full block"
             />
           </div>
@@ -48,6 +49,7 @@ const Register = () => {
               name="photo_URL"
               id="photo_URL"
               placeholder="enter your photo url"
+              required
               className="input input-bordered input-info w-full block"
             />
           </div>
@@ -60,6 +62,7 @@ const Register = () => {
               name="email"
               id="email"
               placeholder="enter your email"
+              required
               className="input input-bordered input-info w-full block"
             />
           </div>
@@ -75,6 +78,7 @@ const Register = () => {
               name="password"
               id="password"
               placeholder="enter your password"
+              required
               className="input input-bordered input-info w-full block"
             />
           </div>
