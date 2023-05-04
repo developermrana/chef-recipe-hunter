@@ -17,7 +17,7 @@ const Chef = ({ chef }) => {
           <p>Experience: {years_of_experience}</p>
           <p>Like: {likes}</p>
         </div>
-        <Link to="">
+        <Link to="/recipes">
           <button className="bg-teal-600 text-white px-5 py-2 mt-3 rounded-md">
             View Recipes
           </button>
