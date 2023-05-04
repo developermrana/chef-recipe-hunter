@@ -6,16 +6,27 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [invalidPass, setInvalidPass] = useState("");
   const [seePassword, setSeePassword] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
+    setError("");
     const form = e.target;
     const name = form.name.value;
     const photoURL = form.photo_URL.value;
     const email = form.email.value;
     const password = form.password.value;
-    setError("");
+    if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(
+        password
+      )
+    ) {
+      setInvalidPass(
+        "enter uppercase, lowercase, number and special character."
+      );
+      return;
+    }
     createUser(email, password)
       .then(() => {})
       .catch((error) => {
@@ -87,7 +98,7 @@ const Register = () => {
           <span className="flex items-center mt-3" onClick={handleSeePassword}>
             <input type="checkbox" className="checkbox me-3" /> see password
           </span>
-          {error ? (
+          {error || invalidPass ? (
             <div className="alert alert-error shadow-lg mt-3">
               <div>
                 <svg
@@ -103,7 +114,7 @@ const Register = () => {
                     d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>{error.message}</span>
+                <span>{error?.message || invalidPass} </span>
               </div>
             </div>
           ) : (
@@ -113,7 +124,7 @@ const Register = () => {
             type="submit"
             className="bg-teal-600 text-white w-full my-5 py-2"
           >
-            Login
+            Registration
           </button>
         </form>
         <p className="text-lg mb-5">

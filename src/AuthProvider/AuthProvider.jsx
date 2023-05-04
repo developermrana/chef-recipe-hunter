@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const loginWithGoogle = () => {
+  const loginWithGoogleAndGithub = () => {
     return signInWithPopup(auth, provider);
   };
   const logout = () => {
@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     createUser,
     login,
-    loginWithGoogle,
+    loginWithGoogleAndGithub,
     user,
     // setUser,
     logout,
