@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const Chef = ({ chef }) => {
   const { id, years_of_experience, picture, number_of_recipes, name, likes } =
     chef;
-  console.log(chef);
   return (
     <div className=" rounded-lg max-w-sm">
       <img src={picture} className="w-full h-72 rounded-lg" alt="Chef img" />
@@ -17,7 +16,7 @@ const Chef = ({ chef }) => {
           <p>Experience: {years_of_experience}</p>
           <p>Like: {likes}</p>
         </div>
-        <Link to="/recipes">
+        <Link to={`/recipes/${id}`}>
           <button className="bg-teal-600 text-white px-5 py-2 mt-3 rounded-md">
             View Recipes
           </button>
