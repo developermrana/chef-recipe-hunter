@@ -32,8 +32,10 @@ const NavigationBar = () => {
               </span>
             </div>
             <div
-              className={`md:flex items-center gap-4 absolute md:static duration-700 bg-teal-600 ${
-                isOpen ? "top-20 end-0 px-8 py-4" : "-end-36 top-20"
+              className={`md:flex items-center gap-4 duration-700 bg-teal-600 ${
+                isOpen
+                  ? "absolute md:static top-20 end-0 p-4 text-center space-y-5"
+                  : "absolute md:static top-20 -end-32 p-4 text-center "
               }`}
             >
               <Link to="/" className="block md:flex">
@@ -64,7 +66,7 @@ const NavigationBar = () => {
                 </>
               ) : (
                 <Link to="/login">
-                  <button className="bg-lime-900 text-white px-5 py-2">
+                  <button className="bg-lime-900 text-white px-5 py-2 rounded-md">
                     Login
                   </button>
                 </Link>
