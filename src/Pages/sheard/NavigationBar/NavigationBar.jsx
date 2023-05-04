@@ -20,7 +20,7 @@ const NavigationBar = () => {
       <div className="bg-teal-600">
         <div className="navbar Container flex justify-between  items-center h-20 text-white font-semibold">
           <div>
-            <h3 className="text-4xl fw-bold">logo</h3>
+            <h3 className="text-4xl fw-bold">Cookiteer</h3>
           </div>
           <nav>
             <div className="text-xl text-end md:hidden">
