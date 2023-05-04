@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
 const Login = () => {
-  const { login, loginWithGoogleAndGithub } = useContext(AuthContext);
+  const { login, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const handleLogin = (e) => {
@@ -26,14 +26,14 @@ const Login = () => {
   };
 
   const handleLoginGoogle = () => {
-    loginWithGoogleAndGithub()
+    loginWithGoogle()
       .then(() => {})
       .catch((error) => {
         setError(error);
       });
   };
   const handleLoginGithub = () => {
-    loginWithGoogleAndGithub()
+    loginWithGithub()
       .then(() => {})
       .catch((error) => {
         setError(error);

@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { createContext, useEffect, useState } from "react";
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
@@ -14,9 +15,11 @@ import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+  const googleProvider = new GoogleAuthProvider();
+
+  const githubProvider = new GithubAuthProvider();
   const [user, setUser] = useState(null);
   const createUser = (email, password) => {
     //   setLoader(true);
@@ -28,8 +31,11 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const loginWithGoogleAndGithub = () => {
-    return signInWithPopup(auth, provider);
+  const loginWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+  const loginWithGithub = () => {
+    return signInWithPopup(auth, githubProvider);
   };
   const logout = () => {
     // setLoader(true);
@@ -48,7 +54,8 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     createUser,
     login,
-    loginWithGoogleAndGithub,
+    loginWithGoogle,
+    loginWithGithub,
     user,
     // setUser,
     logout,
