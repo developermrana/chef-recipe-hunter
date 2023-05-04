@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -9,6 +9,9 @@ import { FaGithub } from "react-icons/fa";
 const Login = () => {
   const { login, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const location = useLocation();
+  const Navigate = useNavigate();
+  const from = location?.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,7 +20,7 @@ const Login = () => {
     const password = form.password.value;
     login(email, password)
       .then((result) => {
-        // Navigate(from);
+        Navigate(from);
       })
       .catch((error) => {
         setError(error);
@@ -27,14 +30,18 @@ const Login = () => {
 
   const handleLoginGoogle = () => {
     loginWithGoogle()
-      .then(() => {})
+      .then(() => {
+        Navigate(from);
+      })
       .catch((error) => {
         setError(error);
       });
   };
   const handleLoginGithub = () => {
     loginWithGithub()
-      .then(() => {})
+      .then(() => {
+        Navigate(from);
+      })
       .catch((error) => {
         setError(error);
       });

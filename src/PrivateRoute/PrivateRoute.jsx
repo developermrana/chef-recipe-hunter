@@ -1,16 +1,25 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { Children, useContext } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
-const PrivateRoute = ({ Children }) => {
-  const { user } = useContext(AuthContext);
+const PrivateRoute = ({ children }) => {
+  const { user, loader } = useContext(AuthContext);
+  const location = useLocation();
+
+  if (loader) {
+    return (
+      <div class="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
+        <div class="border-t-transparent border-solid animate-spin  rounded-full border-blue-400 border-8 h-64 w-64"></div>
+      </div>
+    );
+  }
 
   if (user) {
-    return Children;
+    return children;
   }
-  return <Navigate to="/login" />;
+  return <Navigate state={{ from: location }} to="/login" replace></Navigate>;
 };
 
 export default PrivateRoute;
