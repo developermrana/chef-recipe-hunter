@@ -2,7 +2,9 @@
 /* eslint-disable no-unused-vars */
 
 import React from "react";
+import { FaRegStar, FaStar } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
+import Rating from "react-rating";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -34,10 +36,19 @@ const Recipe = ({ recipeData }) => {
           <p key={i}>{ingra}</p>
         ))}
         <div className="flex justify-between">
-          <p className="inline-block">{rating}</p>
-          <p className="inline-block" onClick={addFavorite}>
+          <div>
+            <Rating
+              readonly
+              placeholderRating={rating}
+              emptySymbol={<FaRegStar />}
+              placeholderSymbol={<FaStar className="text-yellow-500" />}
+              fullSymbol={<FaRegStar />}
+            />
+            <span className="ms-2 ">{rating}</span>
+          </div>
+          <div onClick={addFavorite}>
             <FiHeart />
-          </p>
+          </div>
           <ToastContainer />
         </div>
       </div>
