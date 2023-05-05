@@ -11,6 +11,8 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Hero from "../Pages/Hero/Hero";
 import Home from "../Pages/Home/Home/Home";
 import ChefDetails from "../Layout/ChefDetails";
+import NavigationBar from "../Pages/sheard/NavigationBar/NavigationBar";
+import ChefBanner from "../Pages/ChefBanner/ChefBanner";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +51,16 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/recipes/${params.id}`),
       },
+      // {
+      //   path: `recipes/:id`,
+      //   element: (
+      //     <PrivateRoute>
+      //       <ChefBanner />
+      //     </PrivateRoute>
+      //   ),
+      //   loader: ({ params }) =>
+      //     fetch(`http://localhost:5000/chefs/${params.id}`),
+      // },
 
       {
         path: "blog",
