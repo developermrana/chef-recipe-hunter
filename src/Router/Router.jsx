@@ -39,7 +39,8 @@ const router = createBrowserRouter([
             <Recipes />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/recipes"),
+        loader: () =>
+          fetch("https://assinment-ten-server-mrana565.vercel.app/recipes"),
       },
 
       {
@@ -50,7 +51,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/recipes/${params.id}`),
+          fetch(
+            `https://assinment-ten-server-mrana565.vercel.app/recipes/${params.id}`
+          ),
       },
 
       {

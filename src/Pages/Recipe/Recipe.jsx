@@ -26,7 +26,7 @@ const Recipe = ({ recipeData }) => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/chefs/${chef_id}`)
+    fetch(`https://assinment-ten-server-mrana565.vercel.app/chefs/${chef_id}`)
       .then((res) => res.json())
       .then((data) => setChef(data));
   }, []);
