@@ -41,6 +41,9 @@ const NavigationBar = () => {
               <Link to="/" className="block md:flex">
                 Home
               </Link>
+              <Link to="/about" className="block md:flex">
+                About
+              </Link>
               <Link to="/blog" className="block md:flex">
                 Blog
               </Link>
